@@ -1,0 +1,30 @@
+**************Lambda Function Code******************
+def lambda_handler(event, context):
+    name = "Guest"
+    
+    if 'queryStringParameters' in event and event['queryStringParameters']:
+        name = event['queryStringParameters'].get('name', 'Guest')
+
+    return {
+        'statusCode': 200,
+        'body': f"Hello {name}, Serverless working!"
+    }
+
+***************API GATEWAY FUNCTION******************
+API Gateway Route:
+GET /hello
+API URL:
+https://1o9r0rso6a.execute-api.ap-southeast-2.amazonaws.com/hello?name=Sania
+
+***************AWS CLI Configuration*****************
+
+aws configure
+
+AWS Access Key ID: ************
+AWS Secret Access Key: ****************
+Default region: ap-south-1
+Default output format: json
+
+***************System Architecture*******************
+
+User → API Gateway → AWS Lambda → Response → User
